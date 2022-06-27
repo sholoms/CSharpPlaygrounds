@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/Sholom.Serebryansk/Documents/src/tutorials/ApiPlayground/ApiPlayground.csproj": {}
+    "/home/Sholom.Serebryansk/Documents/src/tutorials/CSharp/ApiPlayground/ApiPlayground.csproj": {}
   },
   "projects": {
-    "/home/Sholom.Serebryansk/Documents/src/tutorials/ApiPlayground/ApiPlayground.csproj": {
+    "/home/Sholom.Serebryansk/Documents/src/tutorials/CSharp/ApiPlayground/ApiPlayground.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/Sholom.Serebryansk/Documents/src/tutorials/ApiPlayground/ApiPlayground.csproj",
+        "projectUniqueName": "/home/Sholom.Serebryansk/Documents/src/tutorials/CSharp/ApiPlayground/ApiPlayground.csproj",
         "projectName": "ApiPlayground",
-        "projectPath": "/home/Sholom.Serebryansk/Documents/src/tutorials/ApiPlayground/ApiPlayground.csproj",
+        "projectPath": "/home/Sholom.Serebryansk/Documents/src/tutorials/CSharp/ApiPlayground/ApiPlayground.csproj",
         "packagesPath": "/home/Sholom.Serebryansk/.nuget/packages/",
-        "outputPath": "/home/Sholom.Serebryansk/Documents/src/tutorials/ApiPlayground/obj/",
+        "outputPath": "/home/Sholom.Serebryansk/Documents/src/tutorials/CSharp/ApiPlayground/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/Sholom.Serebryansk/.nuget/NuGet/NuGet.Config"
@@ -39,9 +39,17 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Autofac.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[6.0.6, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[2.11.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

@@ -1,3 +1,4 @@
+using ApiPlayground.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiPlayground.Controllers;
@@ -30,3 +31,4 @@ public class WeatherForecastController : ControllerBase
         .ToArray();
     }
 }
+ 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8J0CiLXyz203zM402C5y8RjLneDXuUKktp87IwFa3yrTYGmW/HMuiqM7Z5CXxCrMInsPxETfWF4z16zLtKJgpg==",
+  "dgSpecHash": "xgu75ZMKGZvQ5PH6SfORIxmjU9nF+4c+A1MSi6VC7yM9P5MH2RP6OnfWVGFiYU9Wl68iDRJEujyoz1pVLU5lpg==",
   "success": true,
-  "projectFilePath": "/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/CSPlayground.csproj",
+  "projectFilePath": "/home/Sholom.Serebryansk/Documents/src/tutorials/CSharp/c-sharp-playground/CSPlayground/CSPlayground.csproj",
   "expectedPackageFiles": [
     "/home/Sholom.Serebryansk/.nuget/packages/autofac/6.4.0/autofac.6.4.0.nupkg.sha512",
     "/home/Sholom.Serebryansk/.nuget/packages/autofac.extensions.dependencyinjection/8.0.0/autofac.extensions.dependencyinjection.8.0.0.nupkg.sha512",

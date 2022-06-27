@@ -1,4 +1,4 @@
-namespace ApiPlayground;
+namespace ApiPlayground.Models;
 
 public class WeatherForecast
 {

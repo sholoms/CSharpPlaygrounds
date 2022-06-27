@@ -2,11 +2,11 @@ using CSharpPlayground.services;
 
 namespace CSharpPlayground.controllers;
 
-public class ProgramController : IProgramController
+public class TerminalController : IProgramController
 {
     private readonly ICalculator _calculator;
 
-    public ProgramController(ICalculator calculator)
+    public TerminalController(ICalculator calculator)
     {
         _calculator = calculator;
     }

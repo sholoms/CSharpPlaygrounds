@@ -9791,11 +9791,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/TestPlayground/TestPlayground.csproj",
+      "projectUniqueName": "/home/Sholom.Serebryansk/Documents/src/tutorials/CSharp/c-sharp-playground/TestPlayground/TestPlayground.csproj",
       "projectName": "TestPlayground",
-      "projectPath": "/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/TestPlayground/TestPlayground.csproj",
+      "projectPath": "/home/Sholom.Serebryansk/Documents/src/tutorials/CSharp/c-sharp-playground/TestPlayground/TestPlayground.csproj",
       "packagesPath": "/home/Sholom.Serebryansk/.nuget/packages/",
-      "outputPath": "/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/TestPlayground/obj/",
+      "outputPath": "/home/Sholom.Serebryansk/Documents/src/tutorials/CSharp/c-sharp-playground/TestPlayground/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/Sholom.Serebryansk/.nuget/NuGet/NuGet.Config"
@@ -9811,8 +9811,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/CSPlayground.csproj": {
-              "projectPath": "/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/CSPlayground.csproj"
+            "/home/Sholom.Serebryansk/Documents/src/tutorials/CSharp/c-sharp-playground/CSPlayground/CSPlayground.csproj": {
+              "projectPath": "/home/Sholom.Serebryansk/Documents/src/tutorials/CSharp/c-sharp-playground/CSPlayground/CSPlayground.csproj"
             }
           }
         }

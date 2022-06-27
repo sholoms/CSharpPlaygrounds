@@ -13,7 +13,7 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = new ContainerBuilder();
-        builder.RegisterType<ProgramController>().As<IProgramController>();
+        builder.RegisterType<TerminalController>().As<IProgramController>();
         builder.RegisterType<Calculator>().As<ICalculator>();
         builder.RegisterType<StringParsingService>().As<IStringParsingService>();
         Container = builder.Build();
