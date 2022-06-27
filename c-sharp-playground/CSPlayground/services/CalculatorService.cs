@@ -37,7 +37,7 @@ public class Calculator : ICalculator
 
     private string PerformCalculation(string data)
     {
-        var calculation = _parser.ParseStringToCalculation(data);
+        var calculation = _parser.ParseStringToSingleCalculation(data);
         var firstNum = Int32.Parse(calculation[1]);
         var secondNum = Int32.Parse(calculation[3]);
         var result = calculation[2] switch

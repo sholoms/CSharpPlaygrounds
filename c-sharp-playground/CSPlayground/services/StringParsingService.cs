@@ -17,7 +17,7 @@ public class StringParsingService : IStringParsingService
         }
     }
 
-    public List<string> ParseStringToCalculation(string input)
+    public List<string> ParseStringToSingleCalculation(string input)
     {
         var match = Constants.CalculationRegex.Match(input);
         if (match.Success)
