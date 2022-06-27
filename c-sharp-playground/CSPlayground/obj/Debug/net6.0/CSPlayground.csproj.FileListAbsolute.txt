@@ -1,0 +1,15 @@
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/bin/Debug/net6.0/CSPlayground
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/bin/Debug/net6.0/CSPlayground.deps.json
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/bin/Debug/net6.0/CSPlayground.runtimeconfig.json
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/bin/Debug/net6.0/CSPlayground.dll
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/bin/Debug/net6.0/ref/CSPlayground.dll
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/bin/Debug/net6.0/CSPlayground.pdb
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/obj/Debug/net6.0/CSPlayground.csproj.AssemblyReference.cache
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/obj/Debug/net6.0/CSPlayground.GeneratedMSBuildEditorConfig.editorconfig
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/obj/Debug/net6.0/CSPlayground.AssemblyInfoInputs.cache
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/obj/Debug/net6.0/CSPlayground.AssemblyInfo.cs
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/obj/Debug/net6.0/CSPlayground.csproj.CoreCompileInputs.cache
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/obj/Debug/net6.0/CSPlayground.dll
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/obj/Debug/net6.0/ref/CSPlayground.dll
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/obj/Debug/net6.0/CSPlayground.pdb
+/home/Sholom.Serebryansk/Documents/src/tutorials/c-sharp-playground/CSPlayground/obj/Debug/net6.0/CSPlayground.genruntimeconfig.cache
