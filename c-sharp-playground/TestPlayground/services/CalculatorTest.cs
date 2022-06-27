@@ -21,10 +21,10 @@ public class CalculatorTest
     private string _result;
     
     [Theory]
-    [InlineData("3+5", "Result: 8", new[] { "3+5", "3+5", "" }, new[] { "3+5", "3", "+", "5" })]
-    [InlineData("5-3", "Result: 2", new[] { "5-3", "5-3", "" }, new[] { "5-3", "5", "-", "3" })]
-    [InlineData("3*5", "Result: 15", new[] { "3*5", "3*5", "" }, new[] { "3*5", "3", "*", "5" })]
-    [InlineData("15/3", "Result: 5", new[] { "15/3", "15/3", "" }, new[] { "15/3", "15", "/", "3" })]
+    [InlineData("3+5", "Result: 8", new[] { "3+5", "3+5", "", "" }, new[] { "3+5", "3", "+", "5" })]
+    [InlineData("5-3", "Result: 2", new[] { "5-3", "5-3", "", "" }, new[] { "5-3", "5", "-", "3" })]
+    [InlineData("3*5", "Result: 15", new[] { "3*5", "3*5", "", "" }, new[] { "3*5", "3", "*", "5" })]
+    [InlineData("15/3", "Result: 5", new[] { "15/3", "15/3", "", "" }, new[] { "15/3", "15", "/", "3" })]
     public void CalculateShouldReturnTheCorrectResponseWhnGiveAValidStringWithASingleCalculation(
         string data, string response, string[] calculationsResponse, string[] singleCalculationResponse)
     {
