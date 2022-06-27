@@ -20,6 +20,7 @@ public class CalculatorService : ICalculatorService
                 if (string.IsNullOrEmpty(data[2]))
                 {
                     data.RemoveAt(2);
+                    data.RemoveAt(2);
                 }
                 else
                 {
