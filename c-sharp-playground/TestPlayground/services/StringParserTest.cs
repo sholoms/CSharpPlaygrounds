@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CSharpPlayground.services;
@@ -13,6 +14,7 @@ public class StringParserTest
 {
     private IStringParsingService _stringParser = new StringParsingService();
     private string _input;
+    private Exception _exception;
     private List<string> _response;
     
     [Theory]
@@ -38,7 +40,7 @@ public class StringParserTest
         string input, string[] response)
     {
         this.Given(x => GivenAString(input))
-            .When(x => WhenParsingACalculation())
+            .When(x => WhenParsingACalculations())
             .Then(x => ThenItShouldReturnTheCorrectString(response))
             .BDDfy();
     }
@@ -53,17 +55,45 @@ public class StringParserTest
         string input, string[] response)
     {
         this.Given(x => GivenAString(input))
-            .When(x => WhenParsingACalculation())
+            .When(x => WhenParsingACalculations())
             .Then(x => ThenItShouldReturnTheCorrectString(response))
             .BDDfy();
     }
 
-
-    private void WhenParsingACalculation()
+    [Theory]
+    [InlineData("3+5qw8")]
+    [InlineData("3 + 8")]
+    [InlineData("hello")]
+    [InlineData("3*5/9+5qwe")]
+    [InlineData("asd15/3+195*3")]
+    public void ParseCalculationsShouldThrowAnErrorForAnInvalidString(string input)
     {
-        _response = _stringParser.ParseStringToCalculations(_input);
+        this.Given(x => GivenAString(input))
+            .When(x => WhenParsingACalculations())
+            .Then(x => ThenItShouldThrowAnError())
+            .BDDfy();
     }
 
+    private void ThenItShouldThrowAnError()
+    {
+        _exception.ShouldNotBeNull();
+        _exception.ShouldBeOfType(typeof(ArgumentException));
+    }
+
+    private void WhenParsingACalculations()
+    {
+        try
+        {
+            _response = _stringParser.ParseStringToCalculations(_input);
+        }
+        catch (Exception e)
+        {
+            _exception = e;
+        }
+        
+    }
+
+    
 
     private void ThenItShouldReturnTheCorrectString(string[] response)
     {
