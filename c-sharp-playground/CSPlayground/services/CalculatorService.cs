@@ -16,16 +16,14 @@ public class Calculator : ICalculator
             while (data.Count > 2)
             {
                 result = PerformCalculation(data[1]);
-                data[1] = result;
                 if (string.IsNullOrEmpty(data[2]))
                 {
-                    data.RemoveAt(2);
                     data.RemoveAt(2);
                 }
                 else
                 {
-                    data.RemoveAt(0);
-                    data = _parser.ParseStringToCalculations(string.Join("", data));
+                    var newCalculations = result + data[0][data[1].Length..];
+                    data = _parser.ParseStringToCalculations(newCalculations);
                 }
             }
             return $"Result: {result}";

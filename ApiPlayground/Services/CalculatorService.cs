@@ -20,12 +20,11 @@ public class CalculatorService : ICalculatorService
                 if (string.IsNullOrEmpty(data[2]))
                 {
                     data.RemoveAt(2);
-                    data.RemoveAt(2);
                 }
                 else
                 {
-                    data.RemoveAt(0);
-                    data = _parser.ParseStringToCalculations(string.Join("", data));
+                    var newCalculations = result + data[0][result.Length..];
+                    data = _parser.ParseStringToCalculations(newCalculations);
                 }
             }
             return $"Result: {result}";
