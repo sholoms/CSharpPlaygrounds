@@ -11,10 +11,7 @@ public class StringParsingService : IStringParsingService
         {
             return ShowMatches(Constants.CompleteRegex, match);
         }
-        else
-        {
-            throw new ArgumentException();
-        }
+        throw new ArgumentException();
     }
 
     public List<string> ParseStringToSingleCalculation(string input)
@@ -24,10 +21,25 @@ public class StringParsingService : IStringParsingService
         {
             return ShowMatches(Constants.CalculationRegex, match);
         }
-        else
+        throw new ArgumentException();
+    }
+
+    public string nextCalculation(string input)
+    {
+
+        var match = Constants.BracketsRegex.Match(input);
+        if (match.Success)
         {
-            throw new ArgumentException();
+            return ShowMatches(Constants.BracketsRegex, match).Last();
         }
+
+        match = Constants.MultiplyDivideRegex.Match(input);
+        if (match.Success)
+        {
+            return ShowMatches(Constants.MultiplyDivideRegex, match).First();
+        }
+        
+        return input;
     }
 
     private static List<string> ShowMatches(Regex r, Match m)

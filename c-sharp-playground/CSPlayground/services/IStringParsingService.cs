@@ -4,4 +4,5 @@ public interface IStringParsingService
 {
     List<string> ParseStringToCalculations(string input);
     List<string> ParseStringToSingleCalculation(string input);
+    string nextCalculation(string input);
 }

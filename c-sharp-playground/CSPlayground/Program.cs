@@ -14,7 +14,14 @@ public class Program
     {
         var builder = new ContainerBuilder();
         builder.RegisterType<TerminalController>().As<IProgramController>();
-        builder.RegisterType<Calculator>().As<ICalculator>();
+        if (string.Equals(args[0], "bidmas", StringComparison.CurrentCultureIgnoreCase))
+        {
+            builder.RegisterType<BidmasCalculator>().As<ICalculator>();
+        }
+        else
+        {
+            builder.RegisterType<Calculator>().As<ICalculator>();
+        }
         builder.RegisterType<StringParsingService>().As<IStringParsingService>();
         Container = builder.Build();
         
