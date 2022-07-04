@@ -1,9 +1,11 @@
-namespace ApiPlayground.Services;
+using CSharpPlayground.services;
 
-public class CalculatorService : ICalculatorService
+namespace ApiPlayground.services;
+
+public class LeftToRightCalculator : ILeftToRightCalculator
 {
     private readonly IStringParsingService _parser;
-    public CalculatorService(IStringParsingService parser)
+    public LeftToRightCalculator(IStringParsingService parser)
     {
         this._parser = parser;
     }
@@ -16,14 +18,13 @@ public class CalculatorService : ICalculatorService
             while (data.Count > 2)
             {
                 result = PerformCalculation(data[1]);
-                data[1] = result;
                 if (string.IsNullOrEmpty(data[2]))
                 {
                     data.RemoveAt(2);
                 }
                 else
                 {
-                    var newCalculations = result + data[0][result.Length..];
+                    var newCalculations = result + data[0][data[1].Length..];
                     data = _parser.ParseStringToCalculations(newCalculations);
                 }
             }
@@ -37,7 +38,7 @@ public class CalculatorService : ICalculatorService
 
     private string PerformCalculation(string data)
     {
-        var calculation = _parser.ParseStringToCalculation(data);
+        var calculation = _parser.ParseStringToSingleCalculation(data);
         var firstNum = Int32.Parse(calculation[1]);
         var secondNum = Int32.Parse(calculation[3]);
         var result = calculation[2] switch

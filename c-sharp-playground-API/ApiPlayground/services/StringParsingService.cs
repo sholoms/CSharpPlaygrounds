@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace ApiPlayground.Services;
+namespace CSharpPlayground.services;
 
 public class StringParsingService : IStringParsingService
 {
@@ -11,23 +11,35 @@ public class StringParsingService : IStringParsingService
         {
             return ShowMatches(Constants.CompleteRegex, match);
         }
-        else
-        {
-            throw new ArgumentException();
-        }
+        throw new ArgumentException();
     }
 
-    public List<string> ParseStringToCalculation(string input)
+    public List<string> ParseStringToSingleCalculation(string input)
     {
         var match = Constants.CalculationRegex.Match(input);
         if (match.Success)
         {
             return ShowMatches(Constants.CalculationRegex, match);
         }
-        else
+        throw new ArgumentException();
+    }
+
+    public string NextCalculation(string input)
+    {
+
+        var match = Constants.BracketsRegex.Match(input);
+        if (match.Success)
         {
-            throw new ArgumentException();
+            return ShowMatches(Constants.BracketsRegex, match).Last();
         }
+
+        match = Constants.MultiplyDivideRegex.Match(input);
+        if (match.Success)
+        {
+            return ShowMatches(Constants.MultiplyDivideRegex, match).First();
+        }
+        
+        return input;
     }
 
     private static List<string> ShowMatches(Regex r, Match m)
