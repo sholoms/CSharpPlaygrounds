@@ -21,9 +21,8 @@ public class BidmasCalculator : IBidmasCalculator
             input = input.Replace(nextCalculation, Calculate(nextCalculation));
             nextCalculation = _parser.NextCalculation(input);
         }
-        try
-        {
-            var result = ""; 
+
+        var result = ""; 
             var data = _parser.ParseStringToCalculations(input);
             while (data.Count > 2)
             {
@@ -39,11 +38,7 @@ public class BidmasCalculator : IBidmasCalculator
                 }
             }
             return result;
-        }
-        catch (Exception)
-        {
-            return "invalid input";
-        }
+        
     }
 
     private string PerformCalculation(string data)

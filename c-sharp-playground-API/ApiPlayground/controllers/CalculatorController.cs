@@ -1,6 +1,7 @@
 using CSharpPlayground.services;
 
 using System.Web.Http;
+using ApiPlayground.Models;
 
 namespace ApiPlayground.controllers;
 
@@ -18,16 +19,24 @@ public class CalculatorController : ApiController
     
     [Microsoft.AspNetCore.Mvc.Route("calculate")]
     [Microsoft.AspNetCore.Mvc.HttpGet]
-    public string CalculateBidmas(string calculation)
+    public Response CalculateBidmas(string calculation)
     {
-        return _bidmascalculator.Calculate(calculation);
+        var result = _bidmascalculator.Calculate(calculation);
+        return new Response
+        {
+            Result = result
+        };
     }
     
     [Microsoft.AspNetCore.Mvc.Route("calculate/ltr")]
     [Microsoft.AspNetCore.Mvc.HttpGet]
-    public string CalculateLtr(string calculation, string ltr)
+    public Response CalculateLtr(string calculation, string ltr)
     {
 
-        return _leftToRightCalculator.Calculate(calculation);
+        var result = _leftToRightCalculator.Calculate(calculation);
+        return new Response
+        {
+            Result = result
+        };
     }
 }

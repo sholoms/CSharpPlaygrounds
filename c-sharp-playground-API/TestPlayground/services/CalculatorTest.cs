@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using ApiPlayground.services;
 using CSharpPlayground.services;
 using Shouldly;
 using TestStack.BDDfy;
@@ -11,11 +12,11 @@ namespace TestPlayground.services;
 public class CalculatorTest
 {
     private readonly IStringParsingService _stringParser = Substitute.For<IStringParsingService>();
-    private readonly ICalculator _calculator;
+    private readonly LeftToRightCalculator _calculator;
 
     public CalculatorTest()
     {
-        _calculator = new Calculator(_stringParser);
+        _calculator = new LeftToRightCalculator(_stringParser);
     }
     private string _string;
     private string _result;

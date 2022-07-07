@@ -1,4 +1,5 @@
 using ApiPlayground.controllers;
+using ApiPlayground.Middleware;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using CSharpPlayground.services;
@@ -23,6 +24,7 @@ public class Startup
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime appLifetime)
     {
         app.UseRouting();
+        app.UseMiddleware<ExceptionResponseMiddleware>();
         app.UseResponseCompression();
         app.UseEndpoints(x => { x.MapControllers(); });
         appLifetime.ApplicationStopped.Register(() => ApplicationContainer.Dispose());
