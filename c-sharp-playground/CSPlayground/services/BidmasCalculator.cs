@@ -1,4 +1,6 @@
-namespace CSharpPlayground.services;
+using System;
+
+namespace CSPlayground.services;
 
 public class BidmasCalculator : ICalculator
 {
@@ -15,11 +17,11 @@ public class BidmasCalculator : ICalculator
         {
             input = input.Substring(1, input.Length - 2);
         }
-        var nextCalculation = _parser.nextCalculation(input);
+        var nextCalculation = _parser.NextCalculation(input);
         while (nextCalculation != input)
         {
             input = input.Replace(nextCalculation, Calculate(nextCalculation));
-            nextCalculation = _parser.nextCalculation(input);
+            nextCalculation = _parser.NextCalculation(input);
         }
         try
         {

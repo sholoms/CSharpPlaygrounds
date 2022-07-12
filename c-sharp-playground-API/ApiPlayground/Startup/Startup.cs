@@ -14,7 +14,7 @@ public class Startup
     {
 
         services.AddResponseCompression();
-        services.AddControllers();
+        services.AddControllers().AddNewtonsoftJson();
             
         var builder = AutofacConfiguration.Configure(services);
         ApplicationContainer = builder.Build();

@@ -1,11 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Autofac;
-using Autofac.Core;
-using CSharpPlayground.controllers;
-using CSharpPlayground.services;
+using CSPlayground.controllers;
+using CSPlayground.services;
 
-namespace CSharpPlayground;
+namespace CSPlayground;
 
 public class Program
 {
@@ -13,7 +15,7 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = new ContainerBuilder();
-        builder.RegisterType<TerminalController>().As<IProgramController>();
+        builder.RegisterType<ApiController>().As<IProgramController>();
         if (string.Equals(args[0], "bidmas", StringComparison.CurrentCultureIgnoreCase))
         {
             builder.RegisterType<BidmasCalculator>().As<ICalculator>();
@@ -23,15 +25,25 @@ public class Program
             builder.RegisterType<Calculator>().As<ICalculator>();
         }
         builder.RegisterType<StringParsingService>().As<IStringParsingService>();
+        builder.RegisterType<HttpClient>().AsSelf();
+        builder.RegisterType<ApiCalculator>().As<IApiCalculator>();
         Container = builder.Build();
         
-        RunApplication(args);
+        
+        Task t = MainAsync(args);
+        t.Wait();
+    }
+    
+    static async Task MainAsync(string[] args)
+    {
+        await RunApplication(args);
     }
 
-    private static void RunApplication(string[] args)
+    private static async Task RunApplication(string[] args)
     {
-        using var scope = Container.BeginLifetimeScope();
+        string path = args[0] == String.Empty ? null : args[0];
+        await using var scope = Container.BeginLifetimeScope();
         var controller = scope.Resolve<IProgramController>();
-        controller.Run();
+        await controller.Run(path);
     }
 }

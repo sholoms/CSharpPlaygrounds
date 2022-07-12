@@ -2853,7 +2853,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "Autofac.Extensions.DependencyInjection": "8.0.0"
+          "Autofac.Extensions.DependencyInjection": "8.0.0",
+          "Newtonsoft.Json": "9.0.1"
         },
         "compile": {
           "bin/placeholder/CSPlayground.dll": {}
@@ -9875,7 +9876,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.301/RuntimeIdentifierGraph.json"
       }
     }
   }

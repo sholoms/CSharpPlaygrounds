@@ -17,19 +17,40 @@ public class CalculatorController : ApiController
         _bidmascalculator = bidmasCalculator;
     }
     
-    [Microsoft.AspNetCore.Mvc.Route("calculate")]
-    [Microsoft.AspNetCore.Mvc.HttpGet]
-    public Response CalculateBidmas(string calculation)
+    [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("calculate")]
+    public Response GetCalculateBidmas(string calculation)
     {
         var result = _bidmascalculator.Calculate(calculation);
-        return new Response
+        var response = new Response
         {
             Result = result
         };
+        
+        return response;
     }
     
-    [Microsoft.AspNetCore.Mvc.Route("calculate/ltr")]
-    [Microsoft.AspNetCore.Mvc.HttpGet]
+    [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("calculate")]
+    public Task<Response> PostCalculateBidmas([Microsoft.AspNetCore.Mvc.FromBody] CalculationRequest body)
+    {
+        string result;
+        if (body.Ltr)
+        {
+            result = _leftToRightCalculator.Calculate(body.Calculation);
+        }
+        else
+        {
+            result = _bidmascalculator.Calculate(body.Calculation);
+        }
+        
+        var response = new Response
+        {
+            Result = result
+        };
+        
+        return Task.FromResult(response);
+    }
+    
+    [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("calculate/ltr")]
     public Response CalculateLtr(string calculation, string ltr)
     {
 

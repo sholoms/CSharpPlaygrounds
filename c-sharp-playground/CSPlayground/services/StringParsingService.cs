@@ -1,6 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
+using CSharpPlayground;
 
-namespace CSharpPlayground.services;
+namespace CSPlayground.services;
 
 public class StringParsingService : IStringParsingService
 {
@@ -24,7 +28,7 @@ public class StringParsingService : IStringParsingService
         throw new ArgumentException();
     }
 
-    public string nextCalculation(string input)
+    public string NextCalculation(string input)
     {
 
         var match = Constants.BracketsRegex.Match(input);

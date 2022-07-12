@@ -1,6 +1,8 @@
-namespace CSharpPlayground.controllers;
+using System.Threading.Tasks;
+
+namespace CSPlayground.controllers;
 
 public interface IProgramController
 {
-    void Run();
+    Task Run(string path);
 }

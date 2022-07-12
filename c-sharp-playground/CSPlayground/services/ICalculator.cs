@@ -1,4 +1,4 @@
-namespace CSharpPlayground.services;
+namespace CSPlayground.services;
 
 public interface ICalculator
 {
