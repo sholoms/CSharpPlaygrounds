@@ -1,9 +1,5 @@
-using ApiPlayground.controllers;
 using ApiPlayground.Middleware;
 using ApiPlayground.services;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
-
 namespace ApiPlayground.Startup;
 
 public class Startup
