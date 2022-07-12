@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
+using CSharpPlayground;
 
-namespace CSharpPlayground.services;
+namespace ApiPlayground.services;
 
 public class StringParsingService : IStringParsingService
 {

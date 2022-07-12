@@ -1,24 +1,21 @@
 using ApiPlayground.controllers;
 using ApiPlayground.Middleware;
+using ApiPlayground.services;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using CSharpPlayground.services;
 
 namespace ApiPlayground.Startup;
 
 public class Startup
 {
-    private static IContainer ApplicationContainer { get; set; }
 
-    public IServiceProvider ConfigureServices(IServiceCollection services)
+    public void ConfigureServices(IServiceCollection services)
     {
-
         services.AddResponseCompression();
         services.AddControllers().AddNewtonsoftJson();
-            
-        var builder = AutofacConfiguration.Configure(services);
-        ApplicationContainer = builder.Build();
-        return new AutofacServiceProvider(ApplicationContainer);
+        services.AddTransient<IBidmasCalculator, BidmasCalculator>();
+        services.AddTransient<ILeftToRightCalculator, LeftToRightCalculator>();
+        services.AddTransient<IStringParsingService, StringParsingService>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime appLifetime)
@@ -27,7 +24,6 @@ public class Startup
         app.UseMiddleware<ExceptionResponseMiddleware>();
         app.UseResponseCompression();
         app.UseEndpoints(x => { x.MapControllers(); });
-        appLifetime.ApplicationStopped.Register(() => ApplicationContainer.Dispose());
     }
 
 

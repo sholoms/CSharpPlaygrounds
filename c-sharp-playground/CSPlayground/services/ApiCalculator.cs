@@ -13,11 +13,12 @@ public class ApiCalculator : IApiCalculator
     public ApiCalculator(HttpClient client)
     {
         _client = client;
+        _client.BaseAddress = new Uri("http://localhost:9028/");
+        _client.DefaultRequestHeaders.Add("Accept", "application/json");
     }
     public async Task<string> Calculate(string input)
     {
-        _client.BaseAddress = new Uri("http://localhost:9028/");
-        _client.DefaultRequestHeaders.Add("Accept", "application/json");
+
         var body = new CalculationRequest()
         {
             Calculation = input,

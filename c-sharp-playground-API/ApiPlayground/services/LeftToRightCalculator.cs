@@ -1,5 +1,3 @@
-using CSharpPlayground.services;
-
 namespace ApiPlayground.services;
 
 public class LeftToRightCalculator : ILeftToRightCalculator

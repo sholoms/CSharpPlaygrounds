@@ -17,12 +17,16 @@ public class ApiController : IProgramController
     {
         if (!string.IsNullOrEmpty(path))
         {
-            using var reader = new StreamReader("../../input.csv");
+            using var reader = new StreamReader("./../../../input.txt");
+            Console.WriteLine("Start file results");
             while (!reader.EndOfStream)
             {
-                var line = await _apiCalculator.Calculate(await reader.ReadLineAsync());
-                Console.WriteLine(line);
+                var line = await reader.ReadLineAsync();
+                var result = await _apiCalculator.Calculate(line);
+                
+                Console.WriteLine(result);
             }
+            Console.WriteLine("End file results");
         }
         Console.WriteLine("Please write the sum to calculate");
         Console.WriteLine("type 'q' to quit");

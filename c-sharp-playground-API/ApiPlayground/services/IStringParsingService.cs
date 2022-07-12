@@ -1,4 +1,4 @@
-namespace CSharpPlayground.services;
+namespace ApiPlayground.services;
 
 public interface IStringParsingService
 {

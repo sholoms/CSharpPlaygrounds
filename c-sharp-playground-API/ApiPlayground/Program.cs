@@ -25,8 +25,6 @@ public class Program
     
      private static IWebHostBuilder CreateHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .ConfigureServices(services => services.AddAutofac())
                 .UseUrls("http://+:9028")
                 .UseStartup<Startup.Startup>();
-
 }

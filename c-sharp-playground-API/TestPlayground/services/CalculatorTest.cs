@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using ApiPlayground.services;
-using CSharpPlayground.services;
 using Shouldly;
 using TestStack.BDDfy;
 using Xunit;
