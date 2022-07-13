@@ -2,7 +2,7 @@
 
 To create the docker image run the following in your terminal from within the ApiPlayground folder 
 
-```docker build -t counter-image -f Dockerfile .`
+```docker build -t calculator -f Dockerfile .`
 
 to create the container run
 

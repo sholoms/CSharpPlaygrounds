@@ -1,6 +1,6 @@
 namespace ApiPlayground.Models;
 
-public class Response
+public class CalculationResponse
 {
     public string Result { get; set; }
 }
