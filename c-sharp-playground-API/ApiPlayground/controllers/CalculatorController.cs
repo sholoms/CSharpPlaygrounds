@@ -8,18 +8,18 @@ namespace ApiPlayground.controllers;
 public class CalculatorController : ApiController
 {
     private readonly ILeftToRightCalculator _leftToRightCalculator;
-    private readonly IBidmasCalculator _bidmascalculator;
+    private readonly IBidmasCalculator _bidmasCalculator;
     
     public CalculatorController(IBidmasCalculator bidmasCalculator, ILeftToRightCalculator leftToRightCalculator)
     {
         _leftToRightCalculator = leftToRightCalculator;
-        _bidmascalculator = bidmasCalculator;
+        _bidmasCalculator = bidmasCalculator;
     }
     
     [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("calculate")]
     public Response GetCalculateBidmas(string calculation)
     {
-        var result = _bidmascalculator.Calculate(calculation);
+        var result = _bidmasCalculator.Calculate(calculation);
         var response = new Response
         {
             Result = result
@@ -38,7 +38,7 @@ public class CalculatorController : ApiController
         }
         else
         {
-            result = _bidmascalculator.Calculate(body.Calculation);
+            result = _bidmasCalculator.Calculate(body.Calculation);
         }
         
         var response = new Response

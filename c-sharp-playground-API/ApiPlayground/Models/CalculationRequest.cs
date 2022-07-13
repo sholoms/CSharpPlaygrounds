@@ -3,5 +3,5 @@ namespace ApiPlayground.Models;
 public class CalculationRequest
 {
     public string Calculation { get; set; }
-    public bool Ltr { get; set; }
+    public bool Ltr { get; set; } = false;
 }
