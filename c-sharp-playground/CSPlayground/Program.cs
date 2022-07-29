@@ -16,15 +16,6 @@ public class Program
     {
         var builder = new ContainerBuilder();
         builder.RegisterType<ApiController>().As<IProgramController>();
-        if (string.Equals(args[0], "bidmas", StringComparison.CurrentCultureIgnoreCase))
-        {
-            builder.RegisterType<BidmasCalculator>().As<ICalculator>();
-        }
-        else
-        {
-            builder.RegisterType<Calculator>().As<ICalculator>();
-        }
-        builder.RegisterType<StringParsingService>().As<IStringParsingService>();
         builder.RegisterType<HttpClient>().AsSelf();
         builder.RegisterType<ApiCalculator>().As<IApiCalculator>();
         Container = builder.Build();
