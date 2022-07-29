@@ -40,10 +40,9 @@ public class Program
     }
 
     private static async Task RunApplication(string[] args)
-    {
-        string path = args[0] == String.Empty ? null : args[0];
+    { 
         await using var scope = Container.BeginLifetimeScope();
         var controller = scope.Resolve<IProgramController>();
-        await controller.Run(path);
+        await controller.Run();
     }
 }

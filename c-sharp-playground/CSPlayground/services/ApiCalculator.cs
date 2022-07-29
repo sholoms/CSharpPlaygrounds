@@ -28,4 +28,10 @@ public class ApiCalculator : IApiCalculator
         var response = JsonConvert.DeserializeObject<CalculationResponse>(await httpResponse.Content.ReadAsStringAsync());
         return response.Result;
     }
+
+    public async Task GetFileResults()
+    {
+        var httpResponse = await _client.GetAsync("file/results");
+        var response = JsonConvert.DeserializeObject<FileResultResponse>(await httpResponse.Content.ReadAsStringAsync());
+    }
 }
