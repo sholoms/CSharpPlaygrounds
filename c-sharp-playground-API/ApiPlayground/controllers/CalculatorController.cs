@@ -11,12 +11,14 @@ public class CalculatorController : ApiController
 {
     private readonly ILeftToRightCalculator _leftToRightCalculator;
     private readonly IOptions<FileSettings> _fileSettings;
+    private readonly IFileService _fileServie;
     private readonly IBidmasCalculator _bidmasCalculator;
     
-    public CalculatorController(IBidmasCalculator bidmasCalculator, ILeftToRightCalculator leftToRightCalculator, IOptions<FileSettings> fileSettings)
+    public CalculatorController(IBidmasCalculator bidmasCalculator, ILeftToRightCalculator leftToRightCalculator, IOptions<FileSettings> fileSettings, IFileService fileServie)
     {
         _leftToRightCalculator = leftToRightCalculator;
         _fileSettings = fileSettings;
+        _fileServie = fileServie;
         _bidmasCalculator = bidmasCalculator;
     }
     
@@ -65,25 +67,19 @@ public class CalculatorController : ApiController
     }
     
     [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("file/results")]
-    public async Task<FileResultResponse> CalculateFile(string calculation, string ltr)
+    public async Task<FileResultResponse> CalculateFile()
     {
-        using var reader = new StreamReader(_fileSettings.Value.FilePath);
-        List<CalculationResponse> results = new List<CalculationResponse>();
-        while (!reader.EndOfStream)
-        {
-            var line = await reader.ReadLineAsync();
-            var result = new CalculationResponse()
-            {
-                Result = _bidmasCalculator.Calculate(line)
-            };
-
-            results.Add(result);
-        }
-        return new FileResultResponse()
-        {
-            Results = results.ToArray()
-        };
+        return await _fileServie.ReadFile();
     }
+    
+        
+    [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("file/add")]
+    public async Task<FileResultResponse> AddToFile([Microsoft.AspNetCore.Mvc.FromBody] AddToFileRequest body)
+    {
+        await _fileServie.WriteFile(body);
+        return await _fileServie.ReadFile();
+    }
+
     
     [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("docker")]
     public CalculationResponse CalculateDockerTest(string calculation, string ltr)

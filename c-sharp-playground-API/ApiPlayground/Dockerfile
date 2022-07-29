@@ -11,7 +11,7 @@ RUN dotnet publish -c Release -o out
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
-WORKDIR /ApiPlayground
+WORKDIR /app
 COPY --from=build-env /ApiPlayground/out .
-ENV dockertest 5-5
+ENV filepath /app/test.txt
 ENTRYPOINT ["dotnet", "ApiPlayground.dll"]

@@ -24,6 +24,7 @@ public class Startup
         services.AddTransient<IBidmasCalculator, BidmasCalculator>();
         services.AddTransient<ILeftToRightCalculator, LeftToRightCalculator>();
         services.AddTransient<IStringParsingService, StringParsingService>();
+        services.AddTransient<IFileService, FileService>();
         services.Configure<FileSettings>(settings =>
         {
             settings.FilePath = Configuration.GetValue<string>("filepath");
