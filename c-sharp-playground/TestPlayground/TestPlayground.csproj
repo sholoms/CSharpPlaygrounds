@@ -25,5 +25,9 @@
   <ItemGroup>
     <ProjectReference Include="..\CSPlayground\CSPlayground.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="services" />
+  </ItemGroup>
 
 </Project>
