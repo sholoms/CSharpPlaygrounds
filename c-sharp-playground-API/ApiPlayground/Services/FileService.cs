@@ -1,5 +1,6 @@
 using ApiPlayground.Configuration;
-using ApiPlayground.Models;
+using ApiPlayground.controllers;
+using ApiPlayground.services.interfaces;
 using Microsoft.Extensions.Options;
 
 namespace ApiPlayground.services;
@@ -32,7 +33,7 @@ public class FileService : IFileService
         }
         return new FileResultResponse()
         {
-            Results = results.ToArray()
+            Results = results
         };
     }
     

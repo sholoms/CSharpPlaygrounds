@@ -1,6 +1,8 @@
 using ApiPlayground.Configuration;
+using ApiPlayground.controllers;
 using ApiPlayground.Middleware;
 using ApiPlayground.services;
+using ApiPlayground.services.interfaces;
 using Microsoft.Extensions.Configuration;
 
 namespace ApiPlayground.Startup;
@@ -21,6 +23,7 @@ public class Startup
     {
         services.AddResponseCompression();
         services.AddControllers().AddNewtonsoftJson();
+        services.AddTransient<ICalculatorController, CalculatorControllerImplementation>();
         services.AddTransient<IBidmasCalculator, BidmasCalculator>();
         services.AddTransient<ILeftToRightCalculator, LeftToRightCalculator>();
         services.AddTransient<IStringParsingService, StringParsingService>();

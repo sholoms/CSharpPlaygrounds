@@ -1,0 +1,102 @@
+openapi: 3.0.3
+info:
+  title: "Calculator"
+  description: "Calculator"
+  version: 1.0.0
+paths:
+  /calculate:
+    summary: "make a calculation"
+    post:
+      operationId: "calculatePost"
+      requestBody:
+        description: "calculation"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/calculation-request"
+      responses:
+        '200':
+          description: "Successfully calculated"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/calculation-response"
+    get:
+      operationId: "calculateGet"
+      parameters:
+        - in: query
+          name: calculation
+          schema: 
+            type: string
+          required: true
+      responses:
+        '200':
+          description: "Successfully calculated"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/calculation-response"
+  /file/results:
+    get:
+      operationId: "calculateFile"
+      responses:
+        '200':
+          description: "Successfully calculated"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/file-result-response"
+  /file/add:
+    post:
+      operationId: "addToFile"
+      requestBody:
+        description: "add-to-file-request"
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/add-to-file-request"
+                                
+      responses:
+        '200':
+          description: "Successfully calculated"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/file-result-response"
+  
+components:
+  schemas:
+    # General
+    calculation-response:
+      type: object
+      properties: 
+        result:
+          type: string
+    file-result-response:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/calculation-response"
+    calculation-request:
+      type: object
+      title: "calculation-request"
+      properties:
+        calculation:
+          type: string
+          description: "Order Id"
+        ltr:
+          type: boolean
+          description: "leftToRight"
+      additionalProperties: false
+    add-to-file-request:
+      type: object
+      properties:
+        calculations:
+          type: array
+          items:
+            type: string 
+      additionalProperties: false
+    
+    

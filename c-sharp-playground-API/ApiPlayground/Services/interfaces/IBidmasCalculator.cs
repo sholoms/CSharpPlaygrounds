@@ -1,4 +1,4 @@
-namespace ApiPlayground.services;
+namespace ApiPlayground.services.interfaces;
 
 public interface IBidmasCalculator
 {
