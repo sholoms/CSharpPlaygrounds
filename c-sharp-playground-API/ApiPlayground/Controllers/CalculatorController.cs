@@ -1,7 +1,5 @@
-using System.Web.Http;
+
 using ApiPlayground.Configuration;
-using ApiPlayground.Models;
-using ApiPlayground.services;
 using ApiPlayground.services.interfaces;
 using Microsoft.Extensions.Options;
 

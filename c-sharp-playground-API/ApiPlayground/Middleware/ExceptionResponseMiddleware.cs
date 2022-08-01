@@ -1,4 +1,5 @@
-using ApiPlayground.Models;
+
+using ApiPlayground.controllers;
 using Newtonsoft.Json;
 
 namespace ApiPlayground.Middleware;
@@ -22,8 +23,16 @@ public class ExceptionResponseMiddleware
         {
             context.Response.StatusCode = 400;
             context.Response.ContentType = "application/json";
-            await context.Response.WriteAsync(JsonConvert.SerializeObject(new ErrorResponse
+            await context.Response.WriteAsync(JsonConvert.SerializeObject(new ErrorResponse()
                 {ErrorMessage = "Invalid Calculation"}));
         }
+        catch (Exception)
+        {
+            context.Response.StatusCode = 500;
+            context.Response.ContentType = "application/json";
+            await context.Response.WriteAsync(JsonConvert.SerializeObject(new ErrorResponse()
+                {ErrorMessage = "Unexpected error"}));
+        }
+        
     }
 }

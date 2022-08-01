@@ -21,6 +21,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/calculation-response"
+        '400':
+          description: "invalid calculation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error-response"
+        '500':
+          description: "unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error-response"
     get:
       operationId: "calculateGet"
       parameters:
@@ -36,6 +48,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/calculation-response"
+        '400':
+          description: "invalid calculation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error-response"
+        '500':
+          description: "unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error-response"
   /file/results:
     get:
       operationId: "calculateFile"
@@ -46,6 +70,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/file-result-response"
+        '400':
+          description: "invalid calculation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error-response"
+        '500':
+          description: "unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error-response"
   /file/add:
     post:
       operationId: "addToFile"
@@ -55,7 +91,6 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/add-to-file-request"
-                                
       responses:
         '200':
           description: "Successfully calculated"
@@ -63,6 +98,18 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/file-result-response"
+        '400':
+          description: "invalid calculation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error-response"
+        '500':
+          description: "unexpected error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error-response"
   
 components:
   schemas:
@@ -98,5 +145,10 @@ components:
           items:
             type: string 
       additionalProperties: false
-    
+    error-response:
+      type: object
+      properties: 
+        error-message:
+          type: string
+      additionalProperties: false
     
