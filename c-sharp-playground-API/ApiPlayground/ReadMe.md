@@ -10,3 +10,5 @@ to run the container
 
 
 for more info visit the [docker tutorial](https://docs.microsoft.com/en-us/dotnet/core/docker/build-container?tabs=linux)
+
+controller generated using swagger and nswag in repository root 
