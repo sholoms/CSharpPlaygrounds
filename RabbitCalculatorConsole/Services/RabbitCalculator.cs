@@ -56,6 +56,11 @@ public class RabbitCalculator : IRabbitCalculator
         return respQueue.Take();
     }
 
+    public void close()
+    {
+        connection.Close();
+    }
+
     public void Close()
     {
         connection.Close();

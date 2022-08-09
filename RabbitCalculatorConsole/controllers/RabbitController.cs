@@ -27,5 +27,7 @@ public class RabbitController : IProgramController
             Console.WriteLine("type 'q' to quit");
             input = Console.ReadLine();
         }
+
+        _apiCalculator.close();
     }
 }
