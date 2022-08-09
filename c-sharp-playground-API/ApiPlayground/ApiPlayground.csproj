@@ -14,4 +14,8 @@
     <PackageReference Include="System.Web.Http.Common" Version="4.0.20126.16343" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Handlers" />
+  </ItemGroup>
+
 </Project>

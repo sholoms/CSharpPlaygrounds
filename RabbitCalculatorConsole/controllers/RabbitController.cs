@@ -1,15 +1,12 @@
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using CSPlayground.services;
+using RabbitCalculatorConsole.Services;
 
-namespace CSPlayground.controllers;
+namespace RabbitCalculatorConsole.controllers;
 
-public class ApiController : IProgramController
+public class RabbitController : IProgramController
 {
-    private readonly IApiCalculator _apiCalculator;
+    private readonly IRabbitCalculator _apiCalculator;
 
-    public ApiController(IApiCalculator apiCalculator)
+    public RabbitController(IRabbitCalculator apiCalculator)
     {
         _apiCalculator = apiCalculator;
     }
@@ -23,7 +20,7 @@ public class ApiController : IProgramController
         {
             Console.WriteLine("---------------------");
             //var result = _calculator.Calculate(input);
-            var result = input == "file" ? await _apiCalculator.FileResults() : await _apiCalculator.Calculate(input);
+            var result = await _apiCalculator.Calculate(input);
             Console.WriteLine(result);
             Console.WriteLine("---------------------");
             Console.WriteLine("Please write the sum to calculate");
