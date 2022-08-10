@@ -2,6 +2,7 @@ using ApiPlayground.Configuration;
 using ApiPlayground.controllers;
 using ApiPlayground.Handlers;
 using ApiPlayground.Middleware;
+using ApiPlayground.RabbitConfig;
 using ApiPlayground.services;
 using ApiPlayground.services.interfaces;
 using Microsoft.Extensions.Configuration;
@@ -36,7 +37,7 @@ public class Startup
         });
         services.AddSingleton<IRabbitConnectionService, RabbitConnectionService>();
         services.AddSingleton<IRabbitMessageHandler, RabbitMessageHandler>();
-        services.AddHostedService<ConsumerHostedService>();
+        services.AddHostedService<WriteToFileConsumerHostedService>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime appLifetime)

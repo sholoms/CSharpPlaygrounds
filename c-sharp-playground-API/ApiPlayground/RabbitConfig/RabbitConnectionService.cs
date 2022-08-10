@@ -1,6 +1,7 @@
+using ApiPlayground.services;
 using RabbitMQ.Client;
 
-namespace ApiPlayground.services;
+namespace ApiPlayground.RabbitConfig;
 
 public class RabbitConnectionService : IRabbitConnectionService
 {
