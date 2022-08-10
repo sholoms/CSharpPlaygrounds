@@ -11,7 +11,6 @@ public class Program
     {
         var builder = new ContainerBuilder();
         builder.RegisterType<RabbitController>().As<IProgramController>();
-        builder.RegisterType<HttpClient>().AsSelf();
         builder.RegisterType<RabbitCalculator>().As<IRabbitCalculator>();
         Container = builder.Build();
         

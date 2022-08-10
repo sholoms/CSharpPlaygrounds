@@ -1,5 +1,6 @@
 using ApiPlayground.Configuration;
 using ApiPlayground.controllers;
+using ApiPlayground.Handlers;
 using ApiPlayground.Middleware;
 using ApiPlayground.services;
 using ApiPlayground.services.interfaces;
@@ -33,6 +34,9 @@ public class Startup
             settings.FilePath = Configuration.GetValue<string>("filepath");
             settings.DockerTest = Configuration.GetValue<string>("dockertest");
         });
+        services.AddSingleton<IRabbitConnectionService, RabbitConnectionService>();
+        services.AddSingleton<IRabbitMessageHandler, RabbitMessageHandler>();
+        services.AddHostedService<ConsumerHostedService>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime appLifetime)

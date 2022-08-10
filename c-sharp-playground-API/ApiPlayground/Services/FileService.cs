@@ -39,10 +39,16 @@ public class FileService : IFileService
     
     public async Task WriteFile(AddToFileRequest lines)
     {
-        using var writer = new StreamWriter(_fileSettings.Value.FilePath, append: true);
+        await using var writer = new StreamWriter(_fileSettings.Value.FilePath, append: true);
         foreach (var line in lines.Calculations)
         {
             await writer.WriteLineAsync(line);
         }
+    }
+    
+    public async Task WriteFile(string line)
+    {
+        await using var writer = new StreamWriter(_fileSettings.Value.FilePath, append: true);
+        await writer.WriteLineAsync(line);
     }
 }
