@@ -1,6 +1,6 @@
 using RabbitMQ.Client;
 
-namespace ApiPlayground.services;
+namespace ApiPlayground.RabbitConfig;
 
 public interface IRabbitConnectionService
 {

@@ -37,6 +37,7 @@ public class Startup
         });
         services.AddSingleton<IRabbitConnectionService, RabbitConnectionService>();
         services.AddSingleton<IRabbitMessageHandler, RabbitMessageHandler>();
+        services.AddSingleton<IRabbitMessageSender, RabbitMessageSender>();
         services.AddHostedService<WriteToFileConsumerHostedService>();
     }
 

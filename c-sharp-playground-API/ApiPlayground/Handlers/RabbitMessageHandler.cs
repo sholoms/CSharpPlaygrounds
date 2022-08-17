@@ -1,5 +1,8 @@
+using ApiPlayground.controllers;
+using ApiPlayground.RabbitConfig;
 using ApiPlayground.services;
 using ApiPlayground.services.interfaces;
+using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -31,8 +34,9 @@ public class RabbitMessageHandler : IRabbitMessageHandler
         {
             var body = ea.Body.ToArray();
             var text = System.Text.Encoding.UTF8.GetString(body);
-            Console.WriteLine(text);
-            await _fileService.WriteFile(text);
+            var request = JsonConvert.DeserializeObject<AddToFileRequest>(text);
+            Console.WriteLine(request);
+            await _fileService.WriteFile(request);
             _model.BasicAck(ea.DeliveryTag, false);
         };
         _model.BasicConsume(_queueName, false, consumer);

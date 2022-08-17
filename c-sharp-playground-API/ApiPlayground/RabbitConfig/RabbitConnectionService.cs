@@ -1,4 +1,3 @@
-using ApiPlayground.services;
 using RabbitMQ.Client;
 
 namespace ApiPlayground.RabbitConfig;

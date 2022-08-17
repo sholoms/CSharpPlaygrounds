@@ -1,7 +1,10 @@
 using System.Collections.Concurrent;
 using System.Text;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using WriteToFileRabbitConsole.Models;
 
 namespace RabbitCalculatorConsole.Services;
 
@@ -24,7 +27,9 @@ public class RabbitCalculator : IRabbitCalculator
 
     public Task<string> send(string input)
     {
-        var body = Encoding.UTF8.GetBytes(input);
+
+        var jsonString = JsonConvert.SerializeObject(new AddToFileRequest {Calculations = new List<string>(){input}});
+        var body = Encoding.UTF8.GetBytes(jsonString);
 
         _channel.BasicPublish(exchange: "topic_logs",
             routingKey: "",

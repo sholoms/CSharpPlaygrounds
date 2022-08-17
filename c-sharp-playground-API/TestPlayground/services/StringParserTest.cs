@@ -19,9 +19,6 @@ public class StringParserTest
     private List<string> _response;
     
     [Theory]
-    [InlineData("3+5", new[] { "3+5", "3", "+", "5" })]
-    [InlineData("5-3", new[] { "5-3", "5", "-", "3" })]
-    [InlineData("3*5", new[] { "3*5", "3", "*", "5" })]
     [InlineData("15/3", new[] { "15/3", "15", "/", "3" })]
     public void ParseSingleCalculationShouldReturnTheCorrectResponseWhenGiveAValidStringWithASingleCalculation(
         string input, string[] response)
@@ -34,9 +31,6 @@ public class StringParserTest
     
     [Theory]
     [InlineData("3+5", new[] { "3+5", "3+5", "" })]
-    [InlineData("5-3", new[] { "5-3", "5-3", "" })]
-    [InlineData("3*5", new[] { "3*5", "3*5", "" })]
-    [InlineData("15/3", new[] { "15/3", "15/3", "" })]
     public void ParseCalculationsShouldReturnTheCorrectResponseWhenGiveAValidStringWithASingleCalculation(
         string input, string[] response)
     {
@@ -49,9 +43,6 @@ public class StringParserTest
         
     [Theory]
     [InlineData("3+5-8", new[] { "3+5-8", "3+5", "-8"})]
-    [InlineData("5-3*3", new[] { "5-3*3", "5-3", "*3"})]
-    [InlineData("3*5/9+5", new[] { "3*5/9+5", "3*5", "+5"})]
-    [InlineData("15/3+195*3", new[] { "15/3+195*3", "15/3", "*3"})]
     public void ParseCalculationsShouldReturnTheCorrectResponseWhenGiveAValidStringWithMultipleCalculations(
         string input, string[] response)
     {
@@ -63,10 +54,6 @@ public class StringParserTest
 
     [Theory]
     [InlineData("3+5qw8")]
-    [InlineData("3 + 8")]
-    [InlineData("hello")]
-    [InlineData("3*5/9+5qwe")]
-    [InlineData("asd15/3+195*3")]
     public void ParseCalculationsShouldThrowAnErrorForAnInvalidString(string input)
     {
         this.Given(x => GivenAString(input))
