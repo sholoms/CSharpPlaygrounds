@@ -1,11 +1,9 @@
-﻿using System.Text;
-using RabbitMQ.Client;
-
-using Autofac;
+﻿using Autofac;
 using RabbitCalculatorConsole.controllers;
 using RabbitCalculatorConsole.Services;
+using WriteToFileRabbitConsole.Services;
 
-namespace RabbitCalculatorConsole;
+namespace WriteToFileRabbitConsole;
 
 public class Program
 {

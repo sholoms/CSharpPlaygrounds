@@ -16,13 +16,13 @@ public class RabbitMessageSender : IRabbitMessageSender
         _rabbitMqService = rabbitMqService;
     }
 
-    public void Send()
+    public void Send(string routingKey, string message)
     {
         using var connection = _rabbitMqService.CreateChannel();
         using var model = connection.CreateModel();
-        var body = Encoding.UTF8.GetBytes("Hi");
-        model.BasicPublish("UserExchange",
-            string.Empty,
+        var body = Encoding.UTF8.GetBytes(message);
+        model.BasicPublish("calculator-exchange",
+            routingKey: routingKey,
             basicProperties: null,
             body: body);
     }

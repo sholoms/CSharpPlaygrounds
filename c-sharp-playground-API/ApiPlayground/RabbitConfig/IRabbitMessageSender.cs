@@ -2,5 +2,5 @@ namespace ApiPlayground.RabbitConfig;
 
 public interface IRabbitMessageSender
 {
-    void Send();
+    void Send(string routingKey, string message);
 }
