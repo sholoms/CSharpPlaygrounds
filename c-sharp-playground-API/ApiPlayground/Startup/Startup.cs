@@ -1,6 +1,7 @@
 using ApiPlayground.Configuration;
 using ApiPlayground.controllers;
 using ApiPlayground.Handlers;
+using ApiPlayground.Helpers;
 using ApiPlayground.Middleware;
 using ApiPlayground.RabbitConfig;
 using ApiPlayground.services;
@@ -30,6 +31,7 @@ public class Startup
         services.AddTransient<ILeftToRightCalculator, LeftToRightCalculator>();
         services.AddTransient<IStringParsingService, StringParsingService>();
         services.AddTransient<IFileService, FileService>();
+        services.AddTransient<ICalculatorHelper, CalculatorHelper>();
         services.Configure<FileSettings>(settings =>
         {
             settings.FilePath = Configuration.GetValue<string>("filepath");

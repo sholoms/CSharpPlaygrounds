@@ -9,12 +9,12 @@ using NSubstitute;
 
 namespace TestPlayground.services;
 
-public class CalculatorTest
+public class LtrCalculatorTest
 {
     private readonly IStringParsingService _stringParser = Substitute.For<IStringParsingService>();
     private readonly LeftToRightCalculator _calculator;
 
-    public CalculatorTest()
+    public LtrCalculatorTest()
     {
         _calculator = new LeftToRightCalculator(_stringParser);
     }

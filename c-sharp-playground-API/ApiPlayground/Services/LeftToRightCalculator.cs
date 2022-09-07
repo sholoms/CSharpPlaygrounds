@@ -1,3 +1,4 @@
+using ApiPlayground.Helpers;
 using ApiPlayground.services.interfaces;
 
 namespace ApiPlayground.services;
@@ -5,9 +6,12 @@ namespace ApiPlayground.services;
 public class LeftToRightCalculator : ILeftToRightCalculator
 {
     private readonly IStringParsingService _parser;
-    public LeftToRightCalculator(IStringParsingService parser)
+    private readonly ICalculatorHelper _calculator;
+
+    public LeftToRightCalculator(IStringParsingService parser, ICalculatorHelper calculator)
     {
         this._parser = parser;
+        _calculator = calculator;
     }
     public string Calculate(string input)
     {
@@ -17,7 +21,8 @@ public class LeftToRightCalculator : ILeftToRightCalculator
             var data = _parser.ParseStringToCalculations(input);
             while (data.Count > 2)
             {
-                result = PerformCalculation(data[1]);
+                var calculation = _parser.ParseStringToSingleCalculation(data[1]);
+                result = _calculator.PerformCalculation(calculation);
                 if (string.IsNullOrEmpty(data[2]))
                 {
                     data.RemoveAt(2);
@@ -36,21 +41,5 @@ public class LeftToRightCalculator : ILeftToRightCalculator
         }
     }
 
-    private string PerformCalculation(string data)
-    {
-        var calculation = _parser.ParseStringToSingleCalculation(data);
-        var firstNum = Int32.Parse(calculation[1]);
-        var secondNum = Int32.Parse(calculation[3]);
-        var result = calculation[2] switch
-        {
-            "+" => firstNum + secondNum,
-            "-" => firstNum - secondNum,
-            "*" => firstNum * secondNum,
-            "/" => firstNum / secondNum,
-            _ => throw new ArgumentException()
-        };
 
-        return result.ToString();
-        
-    }
 }
