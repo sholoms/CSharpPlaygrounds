@@ -38,14 +38,26 @@ namespace ApiPlayground.controllers
 
         /// <returns>Successfully calculated</returns>
 
-        System.Threading.Tasks.Task<FileResultResponse> CalculateFileAsync();
+        System.Threading.Tasks.Task<StorageResultResponse> CalculateFileAsync();
 
 
         /// <param name="body">add-to-file-request</param>
 
         /// <returns>Successfully calculated</returns>
 
-        System.Threading.Tasks.Task<FileResultResponse> AddToFileAsync(AddToFileRequest body);
+        System.Threading.Tasks.Task<StorageResultResponse> AddToFileAsync(AddToStorageRequest body);
+
+
+        /// <param name="body">add-to-db-request</param>
+
+        /// <returns>Successfully calculated</returns>
+
+        System.Threading.Tasks.Task<StorageResultResponse> AddToDbAsync(AddToStorageRequest body);
+
+
+        /// <returns>Successfully calculated</returns>
+
+        System.Threading.Tasks.Task<StorageResultResponse> CalculateDbAsync();
 
     }
 
@@ -79,7 +91,7 @@ namespace ApiPlayground.controllers
 
         /// <returns>Successfully calculated</returns>
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("file/results")]
-        public System.Threading.Tasks.Task<FileResultResponse> CalculateFile()
+        public System.Threading.Tasks.Task<StorageResultResponse> CalculateFile()
         {
 
             return _implementation.CalculateFileAsync();
@@ -88,10 +100,27 @@ namespace ApiPlayground.controllers
         /// <param name="body">add-to-file-request</param>
         /// <returns>Successfully calculated</returns>
         [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("file/add")]
-        public System.Threading.Tasks.Task<FileResultResponse> AddToFile([Microsoft.AspNetCore.Mvc.FromBody] AddToFileRequest body)
+        public System.Threading.Tasks.Task<StorageResultResponse> AddToFile([Microsoft.AspNetCore.Mvc.FromBody] AddToStorageRequest body)
         {
 
             return _implementation.AddToFileAsync(body);
+        }
+
+        /// <param name="body">add-to-db-request</param>
+        /// <returns>Successfully calculated</returns>
+        [Microsoft.AspNetCore.Mvc.HttpPost, Microsoft.AspNetCore.Mvc.Route("db/add")]
+        public System.Threading.Tasks.Task<StorageResultResponse> AddToDb([Microsoft.AspNetCore.Mvc.FromBody] AddToStorageRequest body)
+        {
+
+            return _implementation.AddToDbAsync(body);
+        }
+
+        /// <returns>Successfully calculated</returns>
+        [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("db/results")]
+        public System.Threading.Tasks.Task<StorageResultResponse> CalculateDb()
+        {
+
+            return _implementation.CalculateDbAsync();
         }
 
     }
@@ -114,7 +143,7 @@ namespace ApiPlayground.controllers
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class FileResultResponse
+    public partial class StorageResultResponse
     {
         [Newtonsoft.Json.JsonProperty("results", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.List<CalculationResponse> Results { get; set; }
@@ -148,7 +177,7 @@ namespace ApiPlayground.controllers
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v13.0.0.0))")]
-    public partial class AddToFileRequest
+    public partial class AddToStorageRequest
     {
         [Newtonsoft.Json.JsonProperty("calculations", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.List<string> Calculations { get; set; }

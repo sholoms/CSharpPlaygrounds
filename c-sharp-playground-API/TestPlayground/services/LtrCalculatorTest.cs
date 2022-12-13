@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using ApiPlayground.Helpers;
 using ApiPlayground.services;
 using ApiPlayground.services.interfaces;
 using Shouldly;
@@ -16,7 +17,7 @@ public class LtrCalculatorTest
 
     public LtrCalculatorTest()
     {
-        _calculator = new LeftToRightCalculator(_stringParser);
+        _calculator = new LeftToRightCalculator(_stringParser, new CalculatorHelper());
     }
     private string _string;
     private string _result;
@@ -53,7 +54,7 @@ public class LtrCalculatorTest
     private void TheSingleCalculationsParserWillReturn(string[] singleCalculationResponse)
     {
         var list = singleCalculationResponse.ToList();
-        _stringParser.ParseStringToSingleCalculation(Arg.Any<string>()).Returns(list);
+        //_stringParser.ParseStringToSingleCalculation(Arg.Any<string>()).(list);z
     }
 
     private void TheCalculationsParserWillReturn(string[] calculationsResponse)

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiPlayground", "ApiPlayground\ApiPlayground.csproj", "{79CAC036-B8DD-43F4-A5C7-9809C24A0ADB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiPlayground.Endpoint", "ApiPlayground.Endpoint\ApiPlayground.Endpoint.csproj", "{79CAC036-B8DD-43F4-A5C7-9809C24A0ADB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlayground", "TestPlayground\TestPlayground.csproj", "{C391DDEB-0A86-4B5A-9389-A20D2802DEAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbPlayground.Persistance", "DbPlayground.Persistance\DbPlayground.Persistance.csproj", "{6CA8CB31-C693-4771-A2BB-58DAD8405859}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +26,9 @@ Global
 		{C391DDEB-0A86-4B5A-9389-A20D2802DEAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C391DDEB-0A86-4B5A-9389-A20D2802DEAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C391DDEB-0A86-4B5A-9389-A20D2802DEAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CA8CB31-C693-4771-A2BB-58DAD8405859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CA8CB31-C693-4771-A2BB-58DAD8405859}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CA8CB31-C693-4771-A2BB-58DAD8405859}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CA8CB31-C693-4771-A2BB-58DAD8405859}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

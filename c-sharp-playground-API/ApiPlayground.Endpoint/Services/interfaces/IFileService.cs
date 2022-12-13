@@ -3,7 +3,7 @@ namespace ApiPlayground.services.interfaces;
 
 public interface IFileService
 {
-    Task<FileResultResponse> ReadFile();
-    Task WriteFile(AddToFileRequest lines);
+    Task<StorageResultResponse> ReadFile();
+    Task WriteFile(AddToStorageRequest lines);
     Task WriteFile(string line);
 }

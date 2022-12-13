@@ -10,14 +10,14 @@ public class CalculatorControllerImplementation : ICalculatorController
 {
     private readonly ILeftToRightCalculator _leftToRightCalculator;
     private readonly IOptions<FileSettings> _fileSettings;
-    private readonly IFileService _fileServie;
+    private readonly IFileService _fileService;
     private readonly IBidmasCalculator _bidmasCalculator;
     
-    public CalculatorControllerImplementation(IBidmasCalculator bidmasCalculator, ILeftToRightCalculator leftToRightCalculator, IOptions<FileSettings> fileSettings, IFileService fileServie)
+    public CalculatorControllerImplementation(IBidmasCalculator bidmasCalculator, ILeftToRightCalculator leftToRightCalculator, IOptions<FileSettings> fileSettings, IFileService fileService)
     {
         _leftToRightCalculator = leftToRightCalculator;
         _fileSettings = fileSettings;
-        _fileServie = fileServie;
+        _fileService = fileService;
         _bidmasCalculator = bidmasCalculator;
     }
     public Task<CalculationResponse> CalculatePostAsync(CalculationRequest body)
@@ -50,14 +50,24 @@ public class CalculatorControllerImplementation : ICalculatorController
         return Task.FromResult(response);
     }
 
-    public async Task<FileResultResponse> CalculateFileAsync()
+    public async Task<StorageResultResponse> CalculateFileAsync()
     {
-        return await _fileServie.ReadFile();
+        return await _fileService.ReadFile();
     }
 
-    public async Task<FileResultResponse> AddToFileAsync(AddToFileRequest body)
+    public Task<StorageResultResponse> AddToDbAsync(AddToStorageRequest body)
     {
-        await _fileServie.WriteFile(body);
-        return await _fileServie.ReadFile();
+        throw new NotImplementedException();
+    }
+
+    public Task<StorageResultResponse> CalculateDbAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<StorageResultResponse> AddToFileAsync(AddToStorageRequest body)
+    {
+        await _fileService.WriteFile(body);
+        return await _fileService.ReadFile();
     }
 }

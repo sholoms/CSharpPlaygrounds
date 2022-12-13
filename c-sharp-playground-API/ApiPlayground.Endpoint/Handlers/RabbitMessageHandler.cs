@@ -44,7 +44,7 @@ public class RabbitMessageHandler : IRabbitMessageHandler
         {
             var body = ea.Body.ToArray();
             var text = System.Text.Encoding.UTF8.GetString(body);
-            var request = JsonConvert.DeserializeObject<AddToFileRequest>(text);
+            var request = JsonConvert.DeserializeObject<AddToStorageRequest>(text);
             Console.WriteLine(request);
             await _fileService.WriteFile(request);
             try

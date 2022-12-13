@@ -23,7 +23,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\ApiPlayground\ApiPlayground.csproj" />
+    <ProjectReference Include="..\ApiPlayground.Endpoint\ApiPlayground.Endpoint.csproj" />
   </ItemGroup>
 
 </Project>

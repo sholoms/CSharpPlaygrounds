@@ -16,7 +16,7 @@ public class FileService : IFileService
         _bidmasCalculator = bidmasCalculator;
     }
     
-    public async Task<FileResultResponse> ReadFile()
+    public async Task<StorageResultResponse> ReadFile()
     {
         
         using var reader = new StreamReader(_fileSettings.Value.FilePath);
@@ -31,13 +31,13 @@ public class FileService : IFileService
 
             results.Add(result);
         }
-        return new FileResultResponse()
+        return new StorageResultResponse()
         {
             Results = results
         };
     }
     
-    public async Task WriteFile(AddToFileRequest lines)
+    public async Task WriteFile(AddToStorageRequest lines)
     {
         await using var writer = new StreamWriter(_fileSettings.Value.FilePath, append: true);
         foreach (var line in lines.Calculations)
