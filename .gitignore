@@ -313,4 +313,4 @@ coverage.json
 coverage-hits.txt
 
 local-secrets.json
-c-sharp-playground/CSPlayground/obj/*
+c-sharp-playground/*/obj/*
