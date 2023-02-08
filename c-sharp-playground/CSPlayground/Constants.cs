@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace CSharpPlayground;
+namespace CSPlayground;
 
 public static class Constants
 {

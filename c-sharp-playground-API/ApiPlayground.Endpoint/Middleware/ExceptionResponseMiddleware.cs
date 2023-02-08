@@ -19,14 +19,14 @@ public class ExceptionResponseMiddleware
         {
             await _next(context);
         }
-        catch (ArgumentException)
+        catch (ArgumentException e)
         {
             context.Response.StatusCode = 400;
             context.Response.ContentType = "application/json";
             await context.Response.WriteAsync(JsonConvert.SerializeObject(new ErrorResponse()
                 {ErrorMessage = "Invalid Calculation"}));
         }
-        catch (Exception)
+        catch (Exception e)
         {
             context.Response.StatusCode = 500;
             context.Response.ContentType = "application/json";

@@ -28,13 +28,24 @@ public class ApiCalculator : IApiCalculator
 
     public async Task<string> FileResults()
     {
-        var response = await _client.CalculateFileAsync();
+        FileResultResponse response;
+        try
+        {
+            response = await _client.CalculateFileAsync();
+        }
+        catch (Exception e)
+        {
+            return "unexpected error";
+        }
+        
+        
         var stringResult = new StringBuilder();
-        foreach (var result in response.Results )
+        foreach (var result in response.Results! )
         {
             stringResult.Append($"{result.Result}\n");
         }
 
-        return stringResult.ToString();
+        var fileResultsString = stringResult.ToString();
+        return String.IsNullOrWhiteSpace(fileResultsString) ? "The file is empty" : fileResultsString;
     }
 }
