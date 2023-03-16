@@ -1,3 +1,4 @@
+using ApiPlayground.Extensions;
 using ApiPlayground.services.interfaces;
 
 namespace ApiPlayground.services;
@@ -13,10 +14,7 @@ public class BidmasCalculator : IBidmasCalculator
 
     public string Calculate(string input)
     {
-        if (input.StartsWith('(') && input.EndsWith(')'))
-        {
-            input = input.Substring(1, input.Length - 2);
-        }
+        input = input.RemoveSurroundedByBrackets();
         var nextCalculation = _parser.NextCalculation(input);
         while (nextCalculation != input)
         {
