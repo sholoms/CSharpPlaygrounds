@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiPlayground.Endpoint", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPlayground", "TestPlayground\TestPlayground.csproj", "{C391DDEB-0A86-4B5A-9389-A20D2802DEAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbPlayground.Persistance", "DbPlayground.Persistance\DbPlayground.Persistance.csproj", "{6CA8CB31-C693-4771-A2BB-58DAD8405859}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbPlayground.Persistence", "DbPlayground.Persistence\DbPlayground.Persistence.csproj", "{6CA8CB31-C693-4771-A2BB-58DAD8405859}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

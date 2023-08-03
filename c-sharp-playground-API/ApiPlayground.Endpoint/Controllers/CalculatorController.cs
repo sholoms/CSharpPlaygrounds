@@ -1,6 +1,8 @@
 
 using ApiPlayground.Configuration;
 using ApiPlayground.services.interfaces;
+using DbPlayground.Persistence;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace ApiPlayground.controllers;
@@ -11,16 +13,19 @@ public class CalculatorControllerImplementation : ICalculatorController
     private readonly ILeftToRightCalculator _leftToRightCalculator;
     private readonly IOptions<FileSettings> _fileSettings;
     private readonly IFileService _fileService;
+    private readonly CalculatorContext _dbContext;
     private readonly IBidmasCalculator _bidmasCalculator;
     
-    public CalculatorControllerImplementation(IBidmasCalculator bidmasCalculator, ILeftToRightCalculator leftToRightCalculator, IOptions<FileSettings> fileSettings, IFileService fileService)
+    public CalculatorControllerImplementation(IBidmasCalculator bidmasCalculator, ILeftToRightCalculator leftToRightCalculator, IOptions<FileSettings> fileSettings, IFileService fileService, CalculatorContext dbContext)
     {
         _leftToRightCalculator = leftToRightCalculator;
         _fileSettings = fileSettings;
         _fileService = fileService;
+        _dbContext = dbContext;
         _bidmasCalculator = bidmasCalculator;
+        _dbContext = dbContext;
     }
-    public Task<CalculationResponse> CalculatePostAsync(CalculationRequest body)
+    public async Task<CalculationResponse> CalculatePostAsync(CalculationRequest body)
     {
         string result;
         if (body.Ltr)
@@ -36,8 +41,9 @@ public class CalculatorControllerImplementation : ICalculatorController
         {
             Result = result
         };
-        
-        return Task.FromResult(response);
+        var db = await _dbContext.Equations.ToListAsync();
+        Console.WriteLine(db.First().Calculation);
+        return response;
     }
 
     public Task<CalculationResponse> CalculateGetAsync(string calculation)

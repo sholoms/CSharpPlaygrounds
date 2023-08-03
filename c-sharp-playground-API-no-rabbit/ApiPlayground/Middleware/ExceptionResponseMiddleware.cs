@@ -17,6 +17,7 @@ public class ExceptionResponseMiddleware
     {
         try
         {
+            context.Response.Headers.Add("Access-Control-Allow-Origin","http://localhost:3000");
             await _next(context);
         }
         catch (ArgumentException)

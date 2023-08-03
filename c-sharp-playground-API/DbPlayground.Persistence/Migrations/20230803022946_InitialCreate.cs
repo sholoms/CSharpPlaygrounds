@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace DbPlayground.Migrations
+namespace DbPlayground.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -12,17 +11,17 @@ namespace DbPlayground.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Calculations",
+                name: "Equations",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    calculation = table.Column<string>(type: "text", nullable: false),
-                    result = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Calculation = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Result = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Calculations", x => x.id);
+                    table.PrimaryKey("PK_Equations", x => x.Id);
                 });
         }
 
@@ -30,7 +29,7 @@ namespace DbPlayground.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Calculations");
+                name: "Equations");
         }
     }
 }

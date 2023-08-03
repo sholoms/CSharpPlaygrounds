@@ -6,6 +6,8 @@ using ApiPlayground.Middleware;
 using ApiPlayground.RabbitConfig;
 using ApiPlayground.services;
 using ApiPlayground.services.interfaces;
+using DbPlayground;
+using DbPlayground.Persistence;
 using Microsoft.Extensions.Configuration;
 
 namespace ApiPlayground.Startup;
@@ -41,6 +43,7 @@ public class Startup
         services.AddSingleton<IRabbitMessageHandler, RabbitMessageHandler>();
         services.AddSingleton<IRabbitMessageSender, RabbitMessageSender>();
         services.AddHostedService<WriteToFileConsumerHostedService>();
+        services.AddDbContext<CalculatorContext>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime appLifetime)
@@ -50,7 +53,4 @@ public class Startup
         app.UseResponseCompression();
         app.UseEndpoints(x => { x.MapControllers(); });
     }
-
-
-
 }

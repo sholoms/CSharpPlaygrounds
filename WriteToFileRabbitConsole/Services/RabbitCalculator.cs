@@ -41,9 +41,4 @@ public class RabbitCalculator : IRabbitCalculator
     {
         _connection.Close();
     }
-
-    public void Close()
-    {
-        _connection.Close();
-    }
 }

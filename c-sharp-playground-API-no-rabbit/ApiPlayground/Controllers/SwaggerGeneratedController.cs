@@ -81,7 +81,6 @@ namespace ApiPlayground.controllers
         [Microsoft.AspNetCore.Mvc.HttpGet, Microsoft.AspNetCore.Mvc.Route("file/results")]
         public System.Threading.Tasks.Task<FileResultResponse> CalculateFile()
         {
-
             return _implementation.CalculateFileAsync();
         }
 
