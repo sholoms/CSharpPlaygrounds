@@ -1,0 +1,16 @@
+services:
+  web:
+    build: ./c-sharp-playground-API
+    depends_on:
+      rabbit:
+        condition: service_started
+    ports:
+      - "9028:9028"
+    environment:
+    - RabbitHost=rabbit
+    - RabbitPort=5672
+  rabbit:
+    image: "rabbitmq:3-management"
+    ports:
+      - "15672:15672"
+      - "5672:5672"

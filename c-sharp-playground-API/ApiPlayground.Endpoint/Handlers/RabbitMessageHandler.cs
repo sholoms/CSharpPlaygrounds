@@ -1,7 +1,9 @@
+using ApiPlayground.Configuration;
 using ApiPlayground.controllers;
 using ApiPlayground.RabbitConfig;
 using ApiPlayground.services;
 using ApiPlayground.services.interfaces;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -18,12 +20,12 @@ public class RabbitMessageHandler : IRabbitMessageHandler
     private readonly IConnection _connection;
     private readonly string _queueName;
 
-    public RabbitMessageHandler(IRabbitConnectionService rabbitMqService, IFileService fileService, IRabbitMessageSender publisher, IBidmasCalculator calculator)
+    public RabbitMessageHandler(IRabbitConnectionService rabbitMqService, IFileService fileService, IRabbitMessageSender publisher, IBidmasCalculator calculator, IOptions<RabbitSettings> config)
     {
         _fileService = fileService;
         _publisher = publisher;
         _calculator = calculator;
-        _connection = rabbitMqService.CreateChannel();
+        _connection = rabbitMqService.CreateChannel(config);
         _channel = _connection.CreateModel();
         _channel.ExchangeDeclare("calculator-exchange", ExchangeType.Direct, true, false, null);
         _queueName = "RabbitCalculator";

@@ -39,6 +39,12 @@ public class Startup
             settings.FilePath = Configuration.GetValue<string>("filepath");
             settings.DockerTest = Configuration.GetValue<string>("dockertest");
         });
+        services.Configure<RabbitSettings>(settings =>
+        {
+            settings.Host = Configuration.GetValue<string>("RabbitHost");
+            settings.Port = Configuration.GetValue<int>("RabbitPort");
+        });
+        Console.WriteLine( Configuration.GetValue<string>("RabbitHost"));
         services.AddSingleton<IRabbitConnectionService, RabbitConnectionService>();
         services.AddSingleton<IRabbitMessageHandler, RabbitMessageHandler>();
         services.AddSingleton<IRabbitMessageSender, RabbitMessageSender>();

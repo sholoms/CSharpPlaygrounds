@@ -18,7 +18,7 @@ public class CalculatorContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        var connectionString = "User Id=sa; Password=Str0ngPassW0rd; Data Source=localhost,55000; Initial Catalog=Calculations; TrustServerCertificate=True;";
+        var connectionString = "Host=localhost; Port=51432; Database=eng; Username=sa; Password=Str0ngPassW0rd";
         options.UseSqlServer(connectionString);
     }
 
