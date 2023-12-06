@@ -23,22 +23,21 @@ public class BidmasCalculator : IBidmasCalculator
         }
 
         var result = ""; 
-            var data = _parser.ParseStringToCalculations(input);
-            while (data.Count > 2)
+        var data = _parser.ParseStringToCalculations(input);
+        while (data.Count > 2)
+        {
+            result = PerformCalculation(data[1]);
+            if (string.IsNullOrEmpty(data[2]))
             {
-                result = PerformCalculation(data[1]);
-                if (string.IsNullOrEmpty(data[2]))
-                {
-                    data.RemoveAt(2);
-                }
-                else
-                {
-                    var newCalculations = result + data[0][data[1].Length..];
-                    data = _parser.ParseStringToCalculations(newCalculations);
-                }
+                data.RemoveAt(2);
             }
-            return result;
-        
+            else
+            {
+                var newCalculations = result + data[0][data[1].Length..];
+                data = _parser.ParseStringToCalculations(newCalculations);
+            }
+        }
+        return result;
     }
 
     private string PerformCalculation(string data)

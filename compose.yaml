@@ -3,7 +3,7 @@ services:
     build: ./c-sharp-playground-API
     depends_on:
       rabbit:
-        condition: service_started
+        condition: service_healthy
     ports:
       - "9028:9028"
     environment:
