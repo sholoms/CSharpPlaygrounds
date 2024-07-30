@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System;
+using System.ComponentModel;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Autofac;
@@ -18,7 +19,7 @@ public class Program
         builder.RegisterType<ApiController>().As<IProgramController>();
         builder.RegisterType<HttpClient>().AsSelf();
         builder.RegisterType<ApiCalculator>().As<IApiCalculator>();
-        builder.RegisterType<ApiCalculatorClient>().As<IApiCalculatorClient>().WithParameter("baseUrl", "http://localhost:59028");
+        builder.RegisterType<ApiCalculatorClient>().As<IApiCalculatorClient>().WithParameter("baseUrl", "http://localhost:9028");
         Container = builder.Build();
         
         
