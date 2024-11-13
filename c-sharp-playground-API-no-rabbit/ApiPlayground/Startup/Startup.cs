@@ -18,11 +18,14 @@ public class Startup
             .AddJsonFile("appsettings.json", true, true)
             .AddEnvironmentVariables();
         Configuration = builder.Build();
-    }
+         }
     public void ConfigureServices(IServiceCollection services)
     {
+        using ILoggerFactory factory = LoggerFactory.Create(builder => builder.AddConsole());
+        ILogger logger = factory.CreateLogger("Program");
         services.AddResponseCompression();
         services.AddControllers().AddNewtonsoftJson();
+        services.AddLogging(builder => builder.AddConsole());
         services.AddTransient<ICalculatorController, CalculatorControllerImplementation>();
         services.AddTransient<IBidmasCalculator, BidmasCalculator>();
         services.AddTransient<ILeftToRightCalculator, LeftToRightCalculator>();

@@ -38,6 +38,7 @@ public class FileService : IFileService
     }
     
     public async Task WriteFile(AddToFileRequest lines)
+    
     {
         await using var writer = new StreamWriter(_fileSettings.Value.FilePath, append: true);
         foreach (var line in lines.Calculations)
