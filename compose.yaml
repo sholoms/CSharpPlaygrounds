@@ -2,8 +2,7 @@ services:
   web:
     build: ./c-sharp-playground-API
     depends_on:
-      rabbit:
-        condition: service_healthy
+      - rabbit
     ports:
       - "9028:9028"
     environment:
@@ -14,3 +13,8 @@ services:
     ports:
       - "15672:15672"
       - "5672:5672"
+#  postgres:
+#    image: "postgres:9.4"
+#    hostname: postgres
+#    ports:
+#      - "5432:5432"

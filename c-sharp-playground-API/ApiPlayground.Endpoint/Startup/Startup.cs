@@ -9,7 +9,6 @@ using ApiPlayground.services.interfaces;
 using DbPlayground;
 using DbPlayground.Persistence;
 using Microsoft.Extensions.Configuration;
-
 namespace ApiPlayground.Startup;
 
 public class Startup
@@ -28,6 +27,7 @@ public class Startup
     {
         services.AddResponseCompression();
         services.AddControllers().AddNewtonsoftJson();
+        services.AddLogging(builder => builder.AddConsole());
         services.AddTransient<ICalculatorController, CalculatorControllerImplementation>();
         services.AddTransient<IBidmasCalculator, BidmasCalculator>();
         services.AddTransient<ILeftToRightCalculator, LeftToRightCalculator>();

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Autofac;
 using CSPlayground.controllers;
 using CSPlayground.services;
+using IContainer = Autofac.IContainer;
 
 namespace CSPlayground;
 
