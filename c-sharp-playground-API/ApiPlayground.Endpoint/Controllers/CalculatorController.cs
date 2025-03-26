@@ -41,8 +41,8 @@ public class CalculatorControllerImplementation : ICalculatorController
         {
             Result = result
         };
-        var db = await _dbContext.Equations.ToListAsync();
-        Console.WriteLine(db.First().Calculation);
+        // var db = await _dbContext.Equations.ToListAsync();
+        // Console.WriteLine(db.First().Calculation);
         return response;
     }
 

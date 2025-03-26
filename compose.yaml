@@ -1,4 +1,20 @@
 services:
+  
+  rabbit:
+    image: "rabbitmq:3-management"
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+  # postgres:
+  #   image: "postgres:9.4"
+  #   hostname: postgres
+  #   ports:
+  #     - "5432:5432"
   web:
     build: ./c-sharp-playground-API
     depends_on:
@@ -9,8 +25,3 @@ services:
     environment:
     - RabbitHost=rabbit
     - RabbitPort=5672
-  rabbit:
-    image: "rabbitmq:3-management"
-    ports:
-      - "15672:15672"
-      - "5672:5672"
